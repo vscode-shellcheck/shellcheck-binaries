@@ -10,3 +10,9 @@ ShellCheck binaries distributed in `.tar.gz` format for Linux and macOS, includi
 ## How to generate more binaries?
 
 Simply push a new tag to this repository in the format `v*.*.*` matching the [ShellCheck version](https://github.com/koalaman/shellcheck/releases). The CI will generate binaries for all supported platforms and upload them to the release.
+
+Example:
+
+```console
+git push origin HEAD:refs/tags/v0.8.0
+```
