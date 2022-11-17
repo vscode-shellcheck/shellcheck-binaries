@@ -14,5 +14,5 @@ Simply push a new tag to this repository in the format `v*.*.*` matching the [Sh
 Example:
 
 ```console
-git push origin HEAD:refs/tags/v0.8.0
+git push origin HEAD:refs/tags/v0.8.0 --force
 ```
