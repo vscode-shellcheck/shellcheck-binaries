@@ -17,7 +17,7 @@ function archive() {
     local arch="${2}"
 
     mkdir -p /archives
-    tar -cvzf "/archives/shellcheck-${VERSION}-${os}-${arch}.tar.gz" -C "/downloads" shellcheck
+    tar -cvzf "/archives/shellcheck-v${VERSION}.${os}.${arch}.tar.gz" -C "/downloads" shellcheck
 }
 
 set -euxo pipefail
