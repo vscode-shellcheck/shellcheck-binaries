@@ -19,6 +19,7 @@ ARG VERSION
 
 # Install packages
 RUN apk add --no-cache \
+  bash \
   findutils \
   tar \
   unzip \
