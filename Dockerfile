@@ -30,9 +30,6 @@ COPY --from=darwin-arm64 shellcheck/$VERSION/bin/shellcheck /shellcheck.darwin.a
 # Copy scripts directory
 COPY scripts /scripts
 
-# Modify scripts permissions
-RUN find /scripts -type f -iname "*.sh" -exec chmod +x "{}" \;
-
 # Execute script
 RUN /scripts/download_and_archive.sh
 
