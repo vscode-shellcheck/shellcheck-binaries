@@ -4,8 +4,6 @@
 set -o errexit
 # Fail on pipeline
 set -o pipefail
-# Disable wildcard character expansion
-set -o noglob
 # Disable undefined variable reference
 set -o nounset
 
