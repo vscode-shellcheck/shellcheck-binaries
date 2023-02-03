@@ -134,7 +134,7 @@ function verify_system() {
   [[ -n "${VERSION-}" ]] || FATAL "Environment variable 'VERSION' not found"
 
   # Darwin arm64 directory
-  [[ -d "${DARWIN_ARM64_DIR}" ]] || FATAL "Darwin arm64 directory '${DARWIN_ARM64_DIR}' does not exists"
+  [[ -d "${DARWIN_ARM64_DIR}" ]] || FATAL "Darwin arm64 directory '${DARWIN_ARM64_DIR}' does not exist"
 
   # Commands
   assert_cmd "curl"

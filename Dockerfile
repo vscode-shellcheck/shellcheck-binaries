@@ -6,7 +6,7 @@ FROM --platform=darwin/arm64 ghcr.io/homebrew/core/shellcheck:${VERSION} AS darw
 
 FROM alpine AS archives
 
-RUN apk add --no-cache bash curl tar unzip xz
+RUN apk add --no-cache bash curl findutils tar unzip xz
 
 COPY scripts/download_and_archive.sh /scripts/download_and_archive.sh
 
