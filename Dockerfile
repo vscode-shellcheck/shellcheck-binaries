@@ -6,12 +6,12 @@ FROM --platform=darwin/arm64 ghcr.io/homebrew/core/shellcheck:${VERSION} AS darw
 
 FROM alpine AS archives
 
-RUN apk add --no-cache curl bash xz
+RUN apk add --no-cache bash curl tar unzip xz
 
 COPY scripts/download_and_archive.sh /scripts/download_and_archive.sh
 
 ARG VERSION
-COPY --from=darwin-arm64 shellcheck/${VERSION}/bin/shellcheck /downloads/
+COPY --from=darwin-arm64 shellcheck/${VERSION}/bin/shellcheck /shellcheck.darwin.arm64.data/
 RUN /scripts/download_and_archive.sh
 
 FROM scratch
