@@ -59,6 +59,8 @@ jobs:
       - name: Build packages
         uses: docker/bake-action@v2
       - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release delete ${TAG} --cleanup-tag --yes
           # It would be nice if we could unmark the release as latest, but it
