@@ -26,6 +26,9 @@ output=$(cat <<EOF
 EOF
 )
 
+# Make it one liner
+output=$(jq -c <<<"${output}")
+
 GITHUB_OUTPUT="${GITHUB_OUTPUT:-/dev/null}"
 
 echo "matrix=${output}" | tee "${GITHUB_OUTPUT}"
