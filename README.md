@@ -16,3 +16,23 @@ Example:
 ```console
 git push origin HEAD:refs/tags/v0.8.0 --force
 ```
+
+## Development
+
+Install dependencies:
+
+```sh
+npm ci
+```
+
+### Check
+
+```sh
+npm run check
+```
+
+### Fix
+
+```sh
+npm run fix
+```

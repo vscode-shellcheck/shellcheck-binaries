@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "mads-hartmann.bash-ide-vscode",
+    "timonwong.shellcheck",
+    "usernamehw.errorlens"
+  ]
+}
