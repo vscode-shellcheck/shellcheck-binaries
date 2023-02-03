@@ -66,6 +66,6 @@ jobs:
 
       - name: Tag ${{ steps.shellcheck.outputs.release }}
         uses: rickstaa/action-create-tag@v1
-        if: (steps.shellcheck.outputs.release != steps.shellcheck_binaries.outputs.release) && steps.shellcheck_homebrew.outputs.release_exist == 'true'
+        if: steps.shellcheck.outputs.release != steps.shellcheck_binaries.outputs.release && steps.shellcheck_homebrew.outputs.release_exist == 'true'
         with:
           tag: ${{ steps.shellcheck.outputs.release }}
