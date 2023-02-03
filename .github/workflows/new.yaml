@@ -26,7 +26,7 @@ jobs:
                 '.tag_name'
           )
 
-          printf '{release}={%s}\n' "$_release" >> "$GITHUB_OUTPUT"
+          printf 'release=%s\n' "$_release" >> "$GITHUB_OUTPUT"
 
       - name: ShellCheck binaries latest release
         id: shellcheck_binaries
@@ -43,7 +43,7 @@ jobs:
                 '.tag_name'
           )
 
-          printf '{release}={%s}\n' "$_release" >> "$GITHUB_OUTPUT"
+          printf 'release=%s\n' "$_release" >> "$GITHUB_OUTPUT"
 
       - name: Shellcheck homebrew container image exist
         id: shellcheck_homebrew
@@ -62,7 +62,7 @@ jobs:
                 'any(.tags[]; . == $release)'
           )
 
-          printf '{release_exist}={%s}\n' "$_release_exist" >> "$GITHUB_OUTPUT"
+          printf 'release_exist=%s\n' "$_release_exist" >> "$GITHUB_OUTPUT"
 
       - name: Tag ${{ steps.shellcheck.outputs.release }}
         uses: rickstaa/action-create-tag@v1
