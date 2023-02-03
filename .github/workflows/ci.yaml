@@ -62,10 +62,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          set -x
+
+          # First delete if release is there already
           gh release delete ${TAG} --cleanup-tag --yes
+
           # It would be nice if we could unmark the release as latest, but it
           # does not seem to be possible currently:
           #   https://github.com/cli/cli/issues/6963
-          gh release create ${TAG} --title ${TAG} \
+          gh release create ${TAG} --title ${TAG} --target main \
             --notes "The original release notes can be found [here](https://github.com/koalaman/shellcheck/releases/tag/${TAG})." \
             dist/*
