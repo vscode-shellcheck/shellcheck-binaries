@@ -31,7 +31,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: [check]
-    # if: github.event_name == 'push'
     permissions:
       contents: write
     strategy:
@@ -59,6 +58,7 @@ jobs:
       - name: Build packages
         uses: docker/bake-action@v2
       - name: Create GitHub release
+        # if: github.event_name == 'push'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: scripts/create_release.sh
@@ -66,6 +66,7 @@ jobs:
   set-latest:
     runs-on: ubuntu-latest
     needs: release
+    # if: github.event_name == 'push'
     permissions:
       contents: write
     steps:
