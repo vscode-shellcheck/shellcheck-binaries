@@ -1,11 +1,14 @@
-variable "VERSION" {
-    default = "0.0.0"
+variable "VERSION" {}
+
+variable "HOMEBREW_VERSION" {
+  default = "${VERSION}"
 }
 
 target "default" {
-    dockerfile = "Dockerfile"
-    args = {
-        VERSION = "${VERSION}"
-    }
-    output = ["./dist"]
+  dockerfile = "Dockerfile"
+  args = {
+    VERSION = "${VERSION}"
+    HOMEBREW_VERSION = "${HOMEBREW_VERSION}"
+  }
+  output = ["./dist"]
 }
