@@ -163,7 +163,7 @@ archive() {
   setup_system
 
   # Darwin
-  archive "$DARWIN_ARM64_DIR" "darwin" "arm64"
+  archive "$DARWIN_ARM64_DIR" "darwin" "aarch64"
   download_and_archive "darwin" "x86_64"
 
   # Linux
@@ -172,5 +172,5 @@ archive() {
   download_and_archive "linux" "armv6hf"
 
   # Windows
-  download_and_archive "windows" "x86"
+  download_and_archive "windows" "x86_64"
 }
