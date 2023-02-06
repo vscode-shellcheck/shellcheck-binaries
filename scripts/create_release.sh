@@ -9,10 +9,10 @@ set -o nounset
 
 TAG="${TAG?}"
 
-# First delete if release is there already
-#   https://github.com/cli/cli/issues/6964
-output=$(gh release delete "${TAG}" --cleanup-tag --yes 2>&1) || [[ "${output}" == "release not found" ]]
-echo "${output}"
+# Delete the release if it already exists
+if gh release view "${TAG}" &>/dev/null; then
+  gh release delete "${TAG}" --cleanup-tag --yes 2>&1
+fi
 
 gh release create "${TAG}" --title "${TAG}" --target main --latest=false \
   --notes "The original release notes can be found [here](https://github.com/koalaman/shellcheck/releases/tag/${TAG})." \
