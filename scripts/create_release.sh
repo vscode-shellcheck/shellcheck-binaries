@@ -10,7 +10,7 @@ set -o nounset
 TAG="${TAG?}"
 
 # Delete the release if it already exists
-if gh release view "${TAG}" &>/dev/null; then
+if gh release view "${TAG}" &> /dev/null; then
   gh release delete "${TAG}" --cleanup-tag --yes 2>&1
 fi
 

@@ -22,8 +22,6 @@ DIRNAME=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 # ================
 # Archives directory
 ARCHIVES_DIR="/archives"
-# Darwin arm64 directory
-DARWIN_ARM64_DIR="/shellcheck.darwin.arm64.data"
 # Temporary directory
 TMP_DIR=
 
@@ -54,9 +52,6 @@ verify_system() {
 
   # Version
   [ -n "${VERSION-}" ] || FATAL "Environment variable 'VERSION' not found"
-
-  # Darwin arm64 directory
-  [ -d "$DARWIN_ARM64_DIR" ] || FATAL "Darwin arm64 directory '$DARWIN_ARM64_DIR' does not exist"
 
   # Commands
   assert_cmd "find"
@@ -163,7 +158,7 @@ archive() {
   setup_system
 
   # Darwin
-  archive "$DARWIN_ARM64_DIR" "darwin" "aarch64"
+  download_and_archive "darwin" "aarch64"
   download_and_archive "darwin" "x86_64"
 
   # Linux

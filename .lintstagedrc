@@ -1,3 +1,3 @@
 {
-  "*.{sh}": "prettier --write"
+  "*.sh": "prettier --write"
 }

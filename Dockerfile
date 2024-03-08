@@ -5,12 +5,6 @@
 # ================
 # ShellCheck version
 ARG VERSION
-ARG HOMEBREW_VERSION
-
-# ================
-# DARWIN ARM64
-# ================
-FROM --platform=darwin/arm64 ghcr.io/homebrew/core/shellcheck:$HOMEBREW_VERSION AS darwin-arm64
 
 # ================
 # ARCHIVES
@@ -26,9 +20,6 @@ RUN apk add --no-cache \
   xz
 
 ARG VERSION
-
-# Copy Darwin arm64 binary
-COPY --from=darwin-arm64 shellcheck/$VERSION/bin/shellcheck /shellcheck.darwin.arm64.data/
 
 # Copy scripts directory
 COPY scripts /scripts
