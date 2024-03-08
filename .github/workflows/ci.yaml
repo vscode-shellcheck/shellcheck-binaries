@@ -15,18 +15,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js and NPM
+        uses: volta-cli/action@v4
+      - name: Install dependencies
+        run: npm install
       - name: Check
         run: npm run check
       - name: ShellCheck
         uses: ludeeus/action-shellcheck@master
         with:
           severity: error
-          ignore_paths: ./node_modules
+          scandir: ./scripts
 
   release:
     runs-on: ubuntu-latest
@@ -36,27 +38,21 @@ jobs:
     strategy:
       matrix:
         include:
-          - version: '0.9.0'
-            homebrew-version: '0.9.0'
-          - version: '0.8.0'
-            homebrew-version: '0.8.0'
-          - version: '0.7.2'
-            homebrew-version: '0.7.2-1'
+          - version: '0.10.0'
       fail-fast: false
     steps:
       - name: Set environment variables
         run: |
           echo "VERSION=${{ matrix.version }}" >> $GITHUB_ENV
-          echo "HOMEBREW_VERSION=${{ matrix.homebrew-version }}" >> $GITHUB_ENV
           echo "TAG=v${{ matrix.version }}" >> $GITHUB_ENV
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
       - name: Build packages
-        uses: docker/bake-action@v2
+        uses: docker/bake-action@v4
       - name: Create GitHub release
         if: github.event_name == 'push'
         env:
@@ -71,7 +67,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Set latest release
