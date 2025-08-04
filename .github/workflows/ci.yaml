@@ -38,7 +38,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - version: '0.10.0'
+          - version: '0.11.0'
       fail-fast: false
     steps:
       - name: Set environment variables
@@ -52,7 +52,9 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Build packages
-        uses: docker/bake-action@v4
+        uses: docker/bake-action@v6
+        with:
+          source: .
       - name: Create GitHub release
         if: github.event_name == 'push'
         env:

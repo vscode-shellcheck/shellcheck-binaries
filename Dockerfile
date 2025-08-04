@@ -13,11 +13,11 @@ FROM alpine AS archives
 
 # Install packages
 RUN apk add --no-cache \
-  bash \
-  findutils \
-  tar \
-  unzip \
-  xz
+ bash \
+ findutils \
+ tar \
+ unzip \
+ xz
 
 ARG VERSION
 
