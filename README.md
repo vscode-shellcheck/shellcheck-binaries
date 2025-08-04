@@ -1,20 +1,14 @@
 # ShellCheck binaries for the VS Code extension
 
-ShellCheck binaries distributed in `.tar.gz` format for Linux and macOS. Used by [ShellCheck VS Code extension](https://github.com/vscode-shellcheck/vscode-shellcheck).
+ShellCheck binaries repackaged in `.tar.gz` format.
 
 ## Why?
 
-- ShellCheck ships binaries packaged in `.tar.xz` format, in which [`bindl`](https://github.com/felipecrs/bindl/issues/217) doesn't support by default.
+- ShellCheck ships binaries packaged in `.tar.xz` format, and [`bindl`](https://github.com/felipecrs/bindl) had no support for `.tar.xz` (but now it does).
 
-## How to generate more binaries?
+## How to add a new version?
 
-Simply push a new tag to this repository in the format `v*.*.*` matching the [ShellCheck version](https://github.com/koalaman/shellcheck/releases). The CI will generate binaries for all supported platforms and upload them to the release.
-
-Example:
-
-```console
-git push origin HEAD:refs/tags/v0.10.0 --force
-```
+Simply add the new version to the [matrix](https://github.com/vscode-shellcheck/shellcheck-binaries/blob/babb67a25637dabc4c9651e358be0b7a25dcdfb9/.github/workflows/ci.yaml#L41).
 
 ## Development
 
